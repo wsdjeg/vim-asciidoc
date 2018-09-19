@@ -15,15 +15,18 @@ endif
 compiler asciidoc
 
 setlocal foldmethod=marker
+
 if &spelllang == ''
   setlocal spelllang=en
 endif
 
-setlocal spell
+
 setlocal autoindent expandtab softtabstop=2 shiftwidth=2 wrap
+
 if &textwidth == 0
   setlocal textwidth=70
 endif
+
 setlocal comments=://
 setlocal commentstring=//\ %s
 
@@ -33,11 +36,11 @@ setlocal nosmartindent nocindent
 setlocal isk-=_
 
 " headings
-nnoremap <buffer> <leader>0 :call asciidoc#set_section_title_level(1)<cr>
-nnoremap <buffer> <leader>1 :call asciidoc#set_section_title_level(2)<cr>
-nnoremap <buffer> <leader>2 :call asciidoc#set_section_title_level(3)<cr>
-nnoremap <buffer> <leader>3 :call asciidoc#set_section_title_level(4)<cr>
-nnoremap <buffer> <leader>4 :call asciidoc#set_section_title_level(5)<cr>
+" nnoremap <buffer> <leader>0 :call asciidoc#set_section_title_level(1)<cr>
+" nnoremap <buffer> <leader>1 :call asciidoc#set_section_title_level(2)<cr>
+" nnoremap <buffer> <leader>2 :call asciidoc#set_section_title_level(3)<cr>
+" nnoremap <buffer> <leader>3 :call asciidoc#set_section_title_level(4)<cr>
+" nnoremap <buffer> <leader>4 :call asciidoc#set_section_title_level(5)<cr>
 
 " TODO: Make simple 'j/k' offsets honour setext style sections
 nnoremap <buffer> <expr><silent> [[ asciidoc#find_prior_section_title()
@@ -50,13 +53,13 @@ xnoremap <buffer> <expr><silent> [] asciidoc#find_prior_section_title() . 'j'
 xnoremap <buffer> <expr><silent> ]] asciidoc#find_next_section_title()
 xnoremap <buffer> <expr><silent> ][ asciidoc#find_next_section_title() . 'k'
 
-xnoremap <buffer> <silent> lu :call asciidoc#make_list('*')<cr>gv
-xnoremap <buffer> <silent> lo :call asciidoc#make_list('.')<cr>gv
-xnoremap <buffer> <silent> l< :call asciidoc#dent_list('in')<cr>gv
-xnoremap <buffer> <silent> l> :call asciidoc#dent_list('out')<cr>gv
+" xnoremap <buffer> <silent> lu :call asciidoc#make_list('*')<cr>gv
+" xnoremap <buffer> <silent> lo :call asciidoc#make_list('.')<cr>gv
+" xnoremap <buffer> <silent> l< :call asciidoc#dent_list('in')<cr>gv
+" xnoremap <buffer> <silent> l> :call asciidoc#dent_list('out')<cr>gv
 
-nmap     <buffer> <leader>lu viplu<c-\><c-n>``
-nmap     <buffer> <leader>lo viplo<c-\><c-n>``
+" nmap     <buffer> <leader>lu viplu<c-\><c-n>``
+" nmap     <buffer> <leader>lo viplo<c-\><c-n>``
 
 let s:asciidoc = {}
 let s:asciidoc.delimited_block_pattern = '^[-.~_+^=*\/]\{4,}\s*$'
