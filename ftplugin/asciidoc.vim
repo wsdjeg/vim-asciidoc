@@ -115,12 +115,6 @@ if ! exists('g:asciidoctor_smartquotes')
   let g:asciidoctor_smartquotes = 0
 endif
 
-if g:asciidoc_smartquotes
-  inoremap <buffer> "" ``''<ESC>hi
-elseif g:asciidoctor_smartquotes
-  inoremap <buffer> "" "``"<ESC>hi
-endif
-
 " indent
 " ------
 setlocal indentexpr=GetAsciidocIndent()
